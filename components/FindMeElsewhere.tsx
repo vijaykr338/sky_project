@@ -16,7 +16,7 @@ const PLATFORMS: Platform[] = [
   {
     name: "YOUTUBE",
     description: "Videos & Highlights",
-    url: "https://www.youtube.com/@ArteziaAurae",
+    url: "https://www.youtube.com/@Artezia-Aurae",
   },
   {
     name: "YOUTUBE LIVE",
@@ -46,7 +46,7 @@ const PLATFORMS: Platform[] = [
   {
     name: "DISCORD",
     description: "Join the Implings",
-    url: "https://discord.gg/arteziaaurae",
+    url: "https://discord.gg/EVeXWaTf",
   },
   {
     name: "THRONE",
