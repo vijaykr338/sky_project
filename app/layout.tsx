@@ -1,6 +1,27 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Crimson_Text, Spectral } from 'next/font/google'
 import "./globals.css";
+import LoadingScreen from "../components/LoadingScreen";
+
+
+const cinzel = Cinzel({
+  variable: '--font-display',
+  subsets: ['latin'],
+})
+
+const crimsonText = Crimson_Text({
+  weight: ['400', '600'],
+  variable: '--font-serif',
+  subsets: ['latin'],
+})
+
+const spectral = Spectral({
+  weight: ['400', '600'],
+  variable: '--font-body',
+  subsets: ['latin'],
+})
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +46,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={` ${cinzel.variable} ${crimsonText.variable} ${spectral.variable}  ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <LoadingScreen />
+      </body>
     </html>
   );
 }

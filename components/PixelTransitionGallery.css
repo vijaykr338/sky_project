@@ -1,0 +1,285 @@
+.pixel-gallery {
+  --gallery-ink: #111111;
+  --gallery-red: #d60031;
+  --gallery-pink: #f04470;
+  --gallery-paper: #f8f7f5;
+  --gallery-line: rgba(17, 17, 17, 0.14);
+
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 5vw, 5rem);
+  background:
+    radial-gradient(circle at 8% 22%, rgba(214, 0, 49, 0.08), transparent 18rem),
+    radial-gradient(circle at 88% 76%, rgba(240, 68, 112, 0.08), transparent 20rem),
+    var(--gallery-paper);
+  color: var(--gallery-ink);
+}
+
+.pixel-gallery::before,
+.pixel-gallery::after {
+  position: absolute;
+  z-index: 0;
+  width: 10px;
+  height: 10px;
+  content: "";
+  background: var(--gallery-red);
+  transform: rotate(45deg);
+}
+
+.pixel-gallery::before {
+  top: 21%;
+  left: 7%;
+}
+
+.pixel-gallery::after {
+  right: 8%;
+  bottom: 17%;
+  background: var(--gallery-pink);
+}
+
+.pixel-gallery__heading,
+.gallery-cards,
+.pixel-gallery__instruction {
+  position: relative;
+  z-index: 1;
+}
+
+.pixel-gallery__heading {
+  max-width: 760px;
+  margin: 0 auto clamp(3.5rem, 7vw, 6rem);
+  text-align: center;
+}
+
+.pixel-gallery__eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--gallery-red);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.pixel-gallery__heading h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+.pixel-gallery__heading > p:last-child {
+  max-width: 520px;
+  margin: 1.5rem auto 0;
+  color: rgba(17, 17, 17, 0.66);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.65;
+}
+
+.gallery-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(150px, 15vw);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+}
+
+.gallery-card-wrap {
+  min-width: 0;
+  min-height: 0;
+  transform: rotate(var(--card-rotation));
+  transition: transform 220ms ease;
+}
+
+.gallery-card-wrap:hover {
+  z-index: 2;
+  transform: rotate(0deg) scale(1.035);
+}
+
+/*
+  Deliberate non-overlapping collage positions.
+  Each card has a distinct grid area.
+*/
+.card--one {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.card--two {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.card--three {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.card--four {
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.card--five {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 2;
+}
+
+.card--six {
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.card--seven {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.card--eight {
+  grid-column: 4 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.card--nine {
+  grid-column: 1 / span 1;
+  grid-row: 4 / span 1;
+}
+
+.card--ten {
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 2;
+}
+
+.card--eleven {
+  grid-column: 4 / span 1;
+  grid-row: 4 / span 1;
+}
+
+.gallery-card,
+.gallery-card .pixelated-image-card {
+  width: 100%;
+  height: 100%;
+}
+
+.reveal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.reveal-content__icon {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.reveal-content p {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.pixel-gallery__instruction {
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  color: rgba(17, 17, 17, 0.55);
+  font-size: 0.9rem;
+  text-align: center;
+}
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .pixel-gallery {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .gallery-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    grid-auto-rows: auto;
+  }
+
+  /* Disable desktop collage positioning */
+  .gallery-card-wrap {
+    grid-column: auto !important;
+    grid-row: auto !important;
+
+    transform: none !important;
+    aspect-ratio: 3 / 4;
+  }
+
+  .gallery-card-wrap:hover {
+    transform: scale(1.02);
+  }
+
+  .gallery-card,
+  .gallery-card .pixelated-image-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Make first card stand out */
+  .card--one {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+
+/* ==========================================
+   PHONES
+========================================== */
+
+@media (max-width: 560px) {
+  .pixel-gallery {
+    padding: 2.5rem 1rem;
+  }
+
+  .pixel-gallery__heading {
+    margin-bottom: 2rem;
+  }
+
+  .pixel-gallery__heading h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 0.95;
+  }
+
+  .pixel-gallery__heading p:last-child {
+    font-size: 0.95rem;
+  }
+
+  .gallery-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gallery-card-wrap,
+  .gallery-card-wrap:hover,
+  .card--one {
+    grid-column: auto !important;
+    aspect-ratio: 3 / 4;
+    transform: none !important;
+  }
+
+  .gallery-card,
+  .gallery-card .pixelated-image-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pixel-gallery__instruction {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+  }
+}
