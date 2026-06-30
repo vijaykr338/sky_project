@@ -47,9 +47,11 @@ function formatClip(rawClip: any): Clip {
       day: "numeric",
       year: "numeric",
     }),
-    embedUrl: rawClip.embed_url,
-    twitchUrl: rawClip.url,
-    objectPosition: "center",
+  // Build the embed URL yourself
+      embedUrl: `https://clips.twitch.tv/embed?clip=${rawClip.id}`,
+
+      twitchUrl: rawClip.url,
+      objectPosition: "center",
   };
 }
 
@@ -60,11 +62,9 @@ function TwitchPlayer({
   clip: Clip;
   className?: string;
 }) {
-  const separator = clip.embedUrl.includes("?") ? "&" : "?";
-
   return (
     <iframe
-      src={`${clip.embedUrl}${separator}parent=${TWITCH_PARENT}&autoplay=false`}
+      src={`https://clips.twitch.tv/embed?clip=${clip.id}&parent=${TWITCH_PARENT}&autoplay=false`}
       title={clip.title}
       className={className}
       allow="autoplay; fullscreen"
