@@ -5,6 +5,7 @@ import "./globals.css";
 import LoadingScreen from "../components/LoadingScreen";
 import Ribbons from "../components/Ribbons";
 import LoadingProvider from "@/components/LoadingProvider";
+import { Analytics } from '@vercel/analytics/next';
 
 const cinzel = Cinzel({
   variable: '--font-display',
@@ -67,6 +68,7 @@ export default function RootLayout({
             effectAmplitude={2}
           />
         </div>
+        <Analytics />
       </body>
     </html>
   );
