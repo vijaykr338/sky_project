@@ -48,6 +48,8 @@ export default function LoadingScreen() {
   const handleContinue = () => {
     if (!ready) return;
 
+    sessionStorage.setItem("intro-seen", "true");
+
     const screen = document.querySelector(
       ".loading-container"
     ) as HTMLElement;
